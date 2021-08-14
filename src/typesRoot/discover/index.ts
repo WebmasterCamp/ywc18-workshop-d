@@ -7,7 +7,6 @@ export interface Chip {
 
 export interface DiscoverItem {
     type: string
-    gender: string
     id: string
     title: string
     detail: string

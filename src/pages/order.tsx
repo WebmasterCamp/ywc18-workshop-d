@@ -42,8 +42,7 @@ const Order = () => {
                                     {title}
                                 </h3>
                                 <p className="text-xl">
-                                    {/* @ts-ignore */}
-                                    ประเภทการจอง :{' '}
+                                    ประเภทการจอง : {/* @ts-ignore */}
                                     {placeMap[place] || 'ที่บ้าน'}
                                 </p>
                                 <p className="text-xl">
