@@ -7,6 +7,8 @@ import { groupMasonry } from '@services/array'
 import type { DiscoverItem } from '@typesRoot'
 import { Card } from '@components/atoms'
 
+import { nanoid } from 'nanoid'
+
 const MasonryLayout: FunctionComponent<{
     data: DiscoverItem[]
 }> = ({ data }) => {
@@ -28,7 +30,7 @@ const MasonryLayout: FunctionComponent<{
                 >
                     {column.map(({ id, image, store, title, tags }) => (
                         <Card
-                            key={id}
+                            key={nanoid(9)}
                             src={image}
                             href={`/store/${store}/${id}`}
                             title={title}

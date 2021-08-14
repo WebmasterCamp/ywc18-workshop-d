@@ -1,8 +1,13 @@
-import { Icon, SearchIcon, MoreIcon } from '@assets'
+import { Icon, SearchIcon, MoreIcon, MenuIcon } from '@assets'
 import Image from 'next/image'
 import nail1 from '@public/nail/1.png'
+import { useState } from 'react'
+import { useAuth } from '@stores/auth'
 
 const Navbar = () => {
+    const [searchText, setSearchText] = useState('')
+    const [userAtom] = useAuth()
+
     return (
         <nav className="flex items-center flex-wrap bg-primary-white md:h-[100px] h-[80px] px-2 md:px-8 justify-between">
             <div className="flex items-center flex-wrap justify-between">
@@ -12,6 +17,8 @@ const Navbar = () => {
                     <input
                         placeholder="ค้นหา"
                         className="bg-grey-1 ml-4 w-full h-full rounded-4xl"
+                        onChange={(val) => setSearchText(val.target.value)}
+                        value={searchText}
                     />
                 </div>
             </div>
@@ -19,18 +26,27 @@ const Navbar = () => {
                 <div className="text-base">เข้าร่วมโครงการกับเรา</div>
                 <div className="text-base">ติดต่อเรา</div>
             </div>
-            <div className="flex items-center ml-2 md:ml-4">
-                <Image
-                    src={nail1}
-                    placeholder="blur"
-                    width={44}
-                    height={44}
-                    className="rounded-half"
-                />
-                <div className="ml-2 hidden md:flex items-center">
-                    <div className="mr-2">username</div>
-                    <MoreIcon />
-                </div>
+            <div className="hidden md:block">
+                {userAtom?.user ? (
+                    <div className="flex items-center ml-2 md:ml-4">
+                        <Image
+                            src={nail1}
+                            placeholder="blur"
+                            width={44}
+                            height={44}
+                            className="rounded-half"
+                        />
+                        <div className="ml-2 hidden md:flex items-center">
+                            <div className="mr-2">username</div>
+                            <MoreIcon />
+                        </div>
+                    </div>
+                ) : (
+                    <div>เข้าสู่ระบบ</div>
+                )}
+            </div>
+            <div className="block md:hidden">
+                <MenuIcon />
             </div>
         </nav>
     )

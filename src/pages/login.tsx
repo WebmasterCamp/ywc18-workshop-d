@@ -23,7 +23,6 @@ const LoginPage = () => {
         try {
             await signInWithPopup(auth, googleAuth)
         } catch (e) {
-            // console.error('login failed')
             router.push('/')
         }
         router.push('/')

@@ -29,6 +29,7 @@ const Selector = ({
                 name={name}
                 value={title}
                 onClick={handleInput}
+                checked={filter[type] === title}
             />
             <span className="pl-2">{title}</span>
         </label>
@@ -60,7 +61,7 @@ const Filter = () => (
             ].map((value) => (
                 <Selector
                     key={value}
-                    type="gender"
+                    type="price"
                     title={value}
                     id={`selector-gender-${value}`}
                     name="price"
