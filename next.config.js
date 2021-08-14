@@ -10,11 +10,7 @@ const withPreact = require('./tools/withPreact')
 const offlineConfig = require('./tools/withOffline')
 
 module.exports = withPlugins(
-    [
-        [withPreact],
-        [withOffline, offlineConfig],
-        [withAnalyze]
-    ],
+    [[withPreact], [withOffline, offlineConfig], [withAnalyze]],
     {
         async rewrites() {
             return [
@@ -47,7 +43,8 @@ module.exports = withPlugins(
                 '@atoms': join(__dirname, 'src/components/atoms'),
                 '@molecules': join(__dirname, 'src/components/molecules'),
                 '@organisms': join(__dirname, 'src/components/organisms'),
-                '@public': join(__dirname, 'public')
+                '@public': join(__dirname, 'public'),
+                '@typesRoot': join(__dirname, 'typesRoot')
             }
 
             return config

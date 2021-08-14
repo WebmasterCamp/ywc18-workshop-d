@@ -1,6 +1,10 @@
 import { useEffect } from 'react'
 
-import { AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
+
+import { Provider } from 'jotai'
+
+import { DataProvider } from '@layouts'
 
 import '@styles/init.sass'
 import 'tailwindcss/tailwind.css'
@@ -12,7 +16,13 @@ const App = ({ Component, pageProps }: AppProps) => {
         })
     }, [])
 
-    return <Component {...pageProps} />
+    return (
+        <Provider>
+            <DataProvider>
+                <Component {...pageProps} />
+            </DataProvider>
+        </Provider>
+    )
 }
 
 export default App

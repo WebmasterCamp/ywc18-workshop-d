@@ -6,6 +6,9 @@ module.exports = {
     },
     darkMode: 'class',
     theme: {
+        fontFamily: {
+            serif: ['Athiti']
+        },
         extend: {}
     },
     variants: {

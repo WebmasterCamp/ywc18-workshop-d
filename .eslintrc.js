@@ -35,7 +35,8 @@ module.exports = {
         'import/extensions': 0,
         'consistent-return': 0,
         'prefer-template': 0,
-        'arrow-body-style': 0
+        'arrow-body-style': 0,
+        'no-console': 0
     },
     ignorePatterns: [
         '__tests__',
