@@ -16,16 +16,6 @@ const DiscoverLayout: FunctionComponent = ({ children }) => {
                     <Tab title="ตัดผมชาย" href="/discover/male-hair" />
                     <Tab title="ทำผมหญิง" href="/discover/female-hair" />
                 </section>
-                <div className="relative">
-                    <button
-                        className="flex flex-row justify-center items-center text-gray-800 text-xl font-semibold px-6 py-2 rounded hover:bg-gray-200 focus:bg-gray-200 transition-colors"
-                        type="button"
-                        onClick={toggle}
-                    >
-                        กรอง
-                    </button>
-                    {!!isOpen && <Filter />}
-                </div>
             </aside>
             <div className="max-w-[1280px] w-full mx-auto px-4 my-8">
                 <img
