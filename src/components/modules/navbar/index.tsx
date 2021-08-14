@@ -24,7 +24,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-20 flex items-center flex-wrap bg-primary-white md:h-[100px] h-[80px] px-2 md:px-8 justify-between">
+            <nav className="sticky top-0 z-30 flex items-center flex-wrap bg-primary-white md:h-[100px] h-[80px] px-2 md:px-8 justify-between">
                 <div className="flex items-center flex-wrap justify-between">
                     <Link href="/">
                         <a>
@@ -67,7 +67,15 @@ const Navbar = () => {
                                 </div>
                             </button>
                             {!!showPopup && (
-                                <div className="absolute z-50 -bottom-16 bg-white w-full px-4 rounded shadow">
+                                <div className="absolute z-50 -bottom-[24px] flex flex-col bg-white w-full px-4 rounded shadow">
+                                    <Link href="/order">
+                                        <a
+                                            onClick={toggle}
+                                            className="text-lg font-semibold text-gray-700 w-full text-left py-4"
+                                        >
+                                            การจอง
+                                        </a>
+                                    </Link>
                                     <button
                                         className="text-lg font-semibold text-gray-700 w-full text-left py-4"
                                         onClick={signOut}

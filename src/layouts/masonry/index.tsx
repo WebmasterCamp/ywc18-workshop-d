@@ -32,7 +32,7 @@ const MasonryLayout: FunctionComponent<{
                         <Card
                             key={nanoid(9)}
                             src={image}
-                            href={`/store/${store}/${id}`}
+                            href={`/store/${store.name}/${id}`}
                             title={title}
                             tags={tags}
                         />

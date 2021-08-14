@@ -4,11 +4,10 @@ import { Divider, Radio, DatePicker, Input, Modal, Form } from 'antd'
 import { useRouter } from 'next/router'
 import type { DiscoverItem } from '@typesRoot'
 import Image from 'next/image'
-import Link from 'next/link'
+
 import map from '@public/mock/map.png'
 
-import { data } from '@services/data'
-import type { GetStaticProps, GetStaticPaths } from 'next'
+import { useCart } from '@stores/cart'
 
 interface ProductProps {
     product: DiscoverItem
@@ -21,17 +20,23 @@ enum Place {
 }
 
 const BookingForm = ({ product }: ProductProps) => {
-    const { image, title, tags, store } = product
+    const { image, title, store, price } = product
     const [place, setPlace] = useState<Place>(Place.Store)
     const router = useRouter()
     const [showModal, setShowModal] = useState(false)
     const [address, setAddress] = useState('')
-    function disabledDate(current) {
+    let [time, updateTime] = useState('')
+
+    let [cart, updateCart] = useCart()
+
+    function disabledDate(current: any) {
         return current && current < dayjs().endOf('day')
     }
+
     const changePlace: EventHandler<any> = (e) => {
         setPlace(e.target.value)
     }
+
     return (
         <div
             className="bg-primary-white px-12 py-8 rounded-lg"
@@ -41,7 +46,22 @@ const BookingForm = ({ product }: ProductProps) => {
                 name="basic"
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 16 }}
-                onFinish={(v) => router.push('/payment')}
+                onFinish={(v) => {
+                    router.push('/payment')
+
+                    updateCart([
+                        ...cart,
+                        {
+                            book: {
+                                place,
+                                address,
+                                time,
+                                date: Date.now()
+                            },
+                            item: product
+                        }
+                    ])
+                }}
             >
                 <div className="text-3xl font-medium">รายละเอียดการจอง</div>
                 <Divider />
@@ -52,7 +72,7 @@ const BookingForm = ({ product }: ProductProps) => {
                     <div className="col-span-2">
                         <div className="text-3xl">{title}</div>
                         <div className="flex">
-                            <div>By {store}</div>
+                            <div>By {store.name}</div>
                             <div className="ml-3">✅ ฉีดวัคซีนแล้ว 2 เข็ม</div>
                         </div>
                         <div>
@@ -119,16 +139,36 @@ const BookingForm = ({ product }: ProductProps) => {
                                     defaultValue="a"
                                     buttonStyle="solid"
                                 >
-                                    <Radio.Button value="10.00">
+                                    <Radio.Button
+                                        value="10.00"
+                                        onClick={() => {
+                                            updateTime('10.00')
+                                        }}
+                                    >
                                         10.00
                                     </Radio.Button>
-                                    <Radio.Button value="13.00">
+                                    <Radio.Button
+                                        value="13.00"
+                                        onClick={() => {
+                                            updateTime('13.00')
+                                        }}
+                                    >
                                         13.00
                                     </Radio.Button>
-                                    <Radio.Button value="15.00">
+                                    <Radio.Button
+                                        value="15.00"
+                                        onClick={() => {
+                                            updateTime('15.00')
+                                        }}
+                                    >
                                         15.00
                                     </Radio.Button>
-                                    <Radio.Button value="17.00">
+                                    <Radio.Button
+                                        value="17.00"
+                                        onClick={() => {
+                                            updateTime('17.00')
+                                        }}
+                                    >
                                         17.00
                                     </Radio.Button>
                                 </Radio.Group>
@@ -139,19 +179,19 @@ const BookingForm = ({ product }: ProductProps) => {
                                     className="text-3xl font-medium ml-4"
                                     style={{ color: '#66D111' }}
                                 >
-                                    {490} ฿
+                                    {price} ฿
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-row gap-4 justify-center mt-12">
-                    <button
-                        className="text-primary text-xl font-semibold px-12 py-3 border-2 border-primary rounded"
-                        onClick={router.back}
+                    <div
+                        className="text-primary text-xl font-semibold px-12 py-3 border-2 border-primary rounded cursor-pointer"
+                        onClick={() => router.back()}
                     >
                         กลับไปก่อนหน้า
-                    </button>
+                    </div>
                     <button
                         className="text-white text-xl font-semibold px-12 py-3 bg-primary rounded"
                         type="submit"
@@ -170,11 +210,12 @@ const BookingForm = ({ product }: ProductProps) => {
                     </div>
                     <Image className="rounded-lg" src={map} />
                     <div
-                        className="text-white text-xl font-semibold px-12 py-3 bg-primary rounded text-center mt-16"
+                        className="text-white text-xl font-semibold px-12 py-3 bg-primary rounded text-center mt-16 cursor-pointer"
                         onClick={() => {
                             setAddress(
                                 'ถนน พระรามที่ ๑ แขวง ปทุมวัน เขตปทุมวัน กรุงเทพมหานคร 10330'
                             )
+
                             setShowModal(false)
                         }}
                     >

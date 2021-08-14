@@ -1,7 +1,7 @@
 import { atom, useAtom } from 'jotai'
 
-import { DiscoverItem } from '@typesRoot'
+import { CartItem } from '@typesRoot/discover'
 
-export const cartAtom = atom<DiscoverItem[]>([])
+export const cartAtom = atom<CartItem[]>([])
 
 export const useCart = () => useAtom(cartAtom)

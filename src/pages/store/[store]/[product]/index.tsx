@@ -21,9 +21,8 @@ interface ProductProps {
 const Product: FunctionComponent<ProductProps> = ({ product = null }) => {
     if (!product) return <h1>Product not found</h1>
     const router = useRouter()
-    let { image, title, tags, store } = product
+    let { image, title, tags, store, price } = product
     const goToBookPage = () => {
-        // console.log(router.as)
         router.push(router.asPath + '/book')
     }
     return (
@@ -43,11 +42,12 @@ const Product: FunctionComponent<ProductProps> = ({ product = null }) => {
                                 เวลาที่ใช้ในการทำ 1 ชั่วโมง
                             </p>
                             <div className="w-[60px] h-[1px] bg-black my-2" />
-                            <h3 className="text-3xl">450฿</h3>
+                            <h3 className="text-3xl">{price}฿</h3>
                         </section>
                         <section className="flex flex-col items-start pt-10 gap-2">
                             <p className="text-lg text-gray-700 font-medium">
-                                By {store} <span>ฉีดวัคซีนแล้ว 2 เข็ม</span>
+                                By {store.name}{' '}
+                                <span>ฉีดวัคซีนแล้ว 2 เข็ม</span>
                             </p>
                             <button
                                 className="text-xl text-white font-semibold px-9 py-3 bg-primary rounded-full"

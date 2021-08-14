@@ -18,7 +18,7 @@ export const SignIn = ({ toggle = () => {} }) => {
     }
 
     return (
-        <div className="fixed z-40 top-0 left-0 w-full h-screen">
+        <div className="fixed z-50 top-0 left-0 w-full h-screen">
             <div
                 className="absolute w-full h-screen"
                 style={{

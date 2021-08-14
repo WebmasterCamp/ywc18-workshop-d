@@ -8,12 +8,20 @@ import { useCart } from '@stores/cart'
 const DataProvider: FunctionComponent<any> = ({ children }) => {
     let user = useFirebaseAuth()
     let [currentUser, updateUser] = useAuth()
-    let [cart] = useCart()
+    let [cart, updateCart] = useCart()
 
     useEffect(() => {
         if (JSON.stringify(currentUser) !== JSON.stringify(user))
             updateUser(user)
     }, [user, currentUser])
+
+    useEffect(() => {
+        updateCart(JSON.parse(localStorage.getItem('cart') || '[]'))
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }, [cart])
 
     return children
 }

@@ -6,9 +6,27 @@ export interface Chip {
 }
 
 export interface DiscoverItem {
-    store: string
     id: string
-    image: StaticImageData
     title: string
+    detail: string
+    image: StaticImageData
     tags: Chip[]
+    price: number
+
+    store: {
+        name: string
+        description: string
+        // ? URL
+        author: string
+    }
+}
+
+export interface CartItem {
+    book: {
+        place: string
+        address: string
+        time: string
+        date: number
+    }
+    item: DiscoverItem
 }

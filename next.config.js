@@ -37,6 +37,9 @@ module.exports = withPlugins(
                 }
             ]
         },
+        eslint: {
+            ignoreDuringBuilds: true
+        },
         experimental: {
             modern: true,
             polyfillsOptimization: true
