@@ -44,7 +44,8 @@ module.exports = withPlugins(
                 '@molecules': join(__dirname, 'src/components/molecules'),
                 '@organisms': join(__dirname, 'src/components/organisms'),
                 '@public': join(__dirname, 'public'),
-                '@typesRoot': join(__dirname, 'typesRoot')
+                '@typesRoot': join(__dirname, 'typesRoot'),
+                '@assets': join(__dirname, 'src/assets')
             }
 
             return config

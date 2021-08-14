@@ -1,40 +1,41 @@
-import { MasonryLayout } from '@layouts'
+import { useState } from 'react'
+import type { FunctionComponent } from 'react'
+
+import type { GetStaticProps } from 'next'
+
+import { MasonryLayout, DiscoverLayout } from '@layouts'
 
 import { useInfiniteScrollObserver } from '@services/hooks'
-import { useAuth } from '@stores/auth'
 
-const Landing = () => {
-    let [user] = useAuth()
+import { data, getDiscover } from '@services/data'
+import type { DiscoverItem } from '@typesRoot'
 
-    console.log(user)
+export interface DiscoverPageProps {
+    discover: DiscoverItem[]
+}
 
-    useInfiniteScrollObserver(
-        () =>
-            new Promise<void>((resolve) => {
-                setTimeout(() => {
-                    resolve()
-                }, 5000)
-            })
-    )
+const Landing: FunctionComponent<DiscoverPageProps> = ({ discover }) => {
+    let [discoverData, updateDiscoverData] = useState(discover)
+
+    useInfiniteScrollObserver(async () => {
+        let newData = await getDiscover()
+
+        updateDiscoverData([...discoverData, ...newData])
+    })
 
     return (
-        <MasonryLayout
-            data={[
-                'hi',
-                'there',
-                'friend',
-                'cool',
-                'story',
-                'bro',
-                'hello',
-                'world',
-                'node',
-                'module',
-                'is',
-                'large'
-            ]}
-        />
+        <DiscoverLayout>
+            <MasonryLayout data={discoverData} />
+        </DiscoverLayout>
     )
+}
+
+export const getStaticProps: GetStaticProps<DiscoverPageProps> = async () => {
+    return {
+        props: {
+            discover: [...data, ...data]
+        }
+    }
 }
 
 export default Landing

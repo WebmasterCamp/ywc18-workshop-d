@@ -20,7 +20,12 @@ const LoginPage = () => {
     const router = useRouter()
 
     const signInWithGoogle = async () => {
-        await signInWithPopup(auth, googleAuth)
+        try {
+            await signInWithPopup(auth, googleAuth)
+        } catch (e) {
+            // console.error('login failed')
+            router.push('/')
+        }
         router.push('/')
     }
     // signInWithEmailAndPassword(auth, email, password)
@@ -36,11 +41,12 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
-            <h1 className="text-center font-serif">Login</h1>
-            <div className="flex justify-center">
-                <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
-                    {/* <input
+        <>
+            <div>
+                <h1 className="text-center font-serif">Login</h1>
+                <div className="flex justify-center">
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
+                        {/* <input
                         type="text"
                         placeholder="email"
                         {...register('email', { required: true })}
@@ -56,21 +62,25 @@ const LoginPage = () => {
                         })}
                         className="block"
                     />
-                    {errors.password && <span>password is required</span>}
+                    {errors.password && <span>password is required</span>} */}
 
-                    <button type="submit" className="block w-full">
-                        Submit
-                    </button> */}
-                    <button
-                        className="block w-full"
-                        onClick={signInWithGoogle}
-                        type="button"
-                    >
-                        Sign in with google
-                    </button>
-                </form>
+                        <button
+                            type="submit"
+                            className="block w-full bg-primary login-button"
+                        >
+                            Submit
+                        </button>
+                        <button
+                            className="block w-full"
+                            onClick={signInWithGoogle}
+                            type="button"
+                        >
+                            Sign in with google
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

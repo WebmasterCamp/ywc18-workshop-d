@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 
 import { Provider } from 'jotai'
 
-import { DataProvider } from '@layouts'
+import { DataProvider, Navbar } from '@layouts'
 
 import '@styles/init.sass'
 import 'tailwindcss/tailwind.css'
@@ -19,6 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     return (
         <Provider>
             <DataProvider>
+                <Navbar />
                 <Component {...pageProps} />
             </DataProvider>
         </Provider>

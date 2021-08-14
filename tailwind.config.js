@@ -9,7 +9,17 @@ module.exports = {
         fontFamily: {
             serif: ['Athiti']
         },
-        extend: {}
+        extend: {
+            colors: {
+                primary: '#E44F39',
+                'primary-white': '#FAFAFA',
+                'grey-1': '#E6E6E6'
+            },
+            borderRadius: {
+                '4xl': '32px',
+                half: '50%'
+            }
+        }
     },
     variants: {
         extend: {}

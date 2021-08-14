@@ -7,6 +7,7 @@ const useInfiniteScrollObserver = (callback: Function, toStop = false) => {
 
     useEffect(() => {
         watchPageEnd()
+        pageEndObserver()
 
         return () => {
             stopObserver()

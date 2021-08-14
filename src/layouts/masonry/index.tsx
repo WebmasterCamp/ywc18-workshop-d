@@ -4,8 +4,11 @@ import type { FunctionComponent } from 'react'
 import { useMasonrySpace } from '@services/hooks'
 import { groupMasonry } from '@services/array'
 
+import type { DiscoverItem } from '@typesRoot'
+import { Card } from '@components/atoms'
+
 const MasonryLayout: FunctionComponent<{
-    data: string[]
+    data: DiscoverItem[]
 }> = ({ data }) => {
     let layoutRef = useRef<HTMLElement>(null)
 
@@ -15,7 +18,7 @@ const MasonryLayout: FunctionComponent<{
 
     return (
         <main
-            className="relative flex flex-row gap-4 w-full px-4"
+            className="relative flex flex-row gap-4 w-full px-4 lg:px-32"
             ref={layoutRef}
         >
             {masonry.map((column, index) => (
@@ -23,16 +26,14 @@ const MasonryLayout: FunctionComponent<{
                     key={index.toString()}
                     className="flex flex-col flex-1 gap-4"
                 >
-                    {column.map((title) => (
-                        <h1
-                            className="w-full bg-gray-200 rounded"
-                            key={title}
-                            style={{
-                                height: Math.random() * 300 + 200
-                            }}
-                        >
-                            {title}
-                        </h1>
+                    {column.map(({ id, image, store, title, tags }) => (
+                        <Card
+                            key={id}
+                            src={image}
+                            href={`/store/${store}/${id}`}
+                            title={title}
+                            tags={tags}
+                        />
                     ))}
                 </section>
             ))}
