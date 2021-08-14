@@ -1,0 +1,114 @@
+import type { FunctionComponent } from 'react'
+import { useRouter } from 'next/router'
+import type { GetStaticProps, GetStaticPaths } from 'next'
+import Image from 'next/image'
+
+import { ProductLayout } from '@layouts'
+
+import { Chips } from '@atoms'
+import { Masonry } from '@molecules'
+
+import { data } from '@services/data'
+
+import map from '@public/mock/map.png'
+
+import type { DiscoverItem } from '@typesRoot'
+
+interface ProductProps {
+    product: DiscoverItem | null
+}
+
+const Product: FunctionComponent<ProductProps> = ({ product = null }) => {
+    if (!product) return <h1>Product not found</h1>
+    const router = useRouter()
+    let { image, title, tags, store } = product
+    const goToBookPage = () => {
+        // console.log(router.as)
+        router.push(router.asPath + '/book')
+    }
+    return (
+        <>
+            <ProductLayout>
+                <header className="flex flex-row justify-center items-start gap-6">
+                    <div className="flex flex-1 justify-end items-center">
+                        <Image src={image} />
+                    </div>
+                    <section className="flex flex-col flex-1 h-full justify-between">
+                        <section className="flex flex-col gap-2">
+                            <h1 className="text-3xl font-bold">{title}</h1>
+
+                            <Chips tags={tags} />
+
+                            <p className="text-lg text-gray-800">
+                                เวลาที่ใช้ในการทำ 1 ชั่วโมง
+                            </p>
+                            <div className="w-[60px] h-[1px] bg-black my-2" />
+                            <h3 className="text-3xl">450฿</h3>
+                        </section>
+                        <section className="flex flex-col items-start pt-10 gap-2">
+                            <p className="text-lg text-gray-700 font-medium">
+                                By {store} <span>ฉีดวัคซีนแล้ว 2 เข็ม</span>
+                            </p>
+                            <button
+                                className="text-xl text-white font-semibold px-9 py-3 bg-primary rounded-full"
+                                onClick={goToBookPage}
+                            >
+                                จองคิว
+                            </button>
+                        </section>
+                    </section>
+                </header>
+
+                <section className="flex flex-col">
+                    <h2 className="text-3xl font-bold mb-4">
+                        รู้จักร้านให้มากขึ้น
+                    </h2>
+                    <section className="flex flex-row justify-center items-start gap-6">
+                        <div className="flex max-w-[50%] justify-start items-center">
+                            <Image className="rounded-lg" src={image} />
+                        </div>
+                        <p className="flex flex-1 text-lg text-gray-700">
+                            Lorem Ipsum
+                        </p>
+                    </section>
+                </section>
+
+                <section className="flex flex-row justify-center items-start gap-6">
+                    <div className="flex max-w-[50%] justify-start items-center">
+                        <a
+                            href="https://www.google.com/maps/place/True+Digital+Park/@13.6851571,100.6091376,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29ed269181bb1:0x60c3178ba983c76!8m2!3d13.6851519!4d100.6113263"
+                            target="_blank"
+                            rel="noreferer noreopener"
+                        >
+                            <Image className="rounded-lg" src={map} />
+                        </a>
+                    </div>
+                    <p className="flex flex-1 text-lg text-gray-700">
+                        Lorem Ipsum
+                    </p>
+                </section>
+            </ProductLayout>
+            <Masonry />
+        </>
+    )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: true
+    }
+}
+
+export const getStaticProps: GetStaticProps<ProductProps> = async (ctx) => {
+    let { params } = ctx
+
+    return {
+        props: {
+            product: data.find(({ id }) => id === params?.product) || null
+        },
+        revalidate: 1
+    }
+}
+
+export default Product

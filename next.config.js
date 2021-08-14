@@ -5,12 +5,29 @@ const withAnalyze = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true'
 })
 const withPlugins = require('next-compose-plugins')
+const withLess = require('next-with-less')
 
 const withPreact = require('./tools/withPreact')
 const offlineConfig = require('./tools/withOffline')
 
 module.exports = withPlugins(
-    [[withPreact], [withOffline, offlineConfig], [withAnalyze]],
+    [
+        [
+            withLess,
+            {
+                lessLoaderOptions: {
+                    lessOptions: {
+                        modifyVars: {
+                            'primary-color': '#E44F39'
+                        }
+                    }
+                }
+            }
+        ],
+        [withPreact],
+        [withOffline, offlineConfig],
+        [withAnalyze]
+    ],
     {
         async rewrites() {
             return [

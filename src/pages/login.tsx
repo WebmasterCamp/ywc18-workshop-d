@@ -6,17 +6,13 @@ import {
     signInWithEmailAndPassword
 } from 'firebase/auth'
 import { auth } from '@services/firebase'
-// import { useAuth } from '@stores/auth'
+import { useEffect } from 'react'
+import { useAuth } from '@stores/auth'
 
 const googleAuth = new GoogleAuthProvider()
 
 const LoginPage = () => {
-    const {
-        // register,
-        handleSubmit
-        // formState: { errors }
-    } = useForm()
-    // const [userAtom] = useAuth()
+    const [user] = useAuth()
     const router = useRouter()
 
     const signInWithGoogle = async () => {
@@ -28,55 +24,42 @@ const LoginPage = () => {
         router.push('/')
     }
     // signInWithEmailAndPassword(auth, email, password)
-    const onSubmit = async ({
-        email,
-        password
-    }: {
-        email: string
-        password: string
-    }) => {
-        const res = await signInWithEmailAndPassword(auth, email, password)
-        console.log(res)
-    }
+    // const onSubmit = async ({
+    //     email,
+    //     password
+    // }: {
+    //     email: string
+    //     password: string
+    // }) => {
+    //     const res = await signInWithEmailAndPassword(auth, email, password)
+    //     console.log(res)
+    // }
+
+    useEffect(() => {
+        if (user.isInit && user.user) router.replace('/')
+    }, [user])
 
     return (
         <>
-            <div>
-                <h1 className="text-center font-serif">Login</h1>
+            <div
+                className="flex flex-col justify-center"
+                style={{
+                    height: 'calc(100vh - 164px)'
+                }}
+            >
+                <h1 className="text-center mb-8 text-3xl font-semibold">
+                    Login
+                </h1>
                 <div className="flex justify-center">
-                    <form onSubmit={handleSubmit(onSubmit)} className="mt-16">
-                        {/* <input
-                        type="text"
-                        placeholder="email"
-                        {...register('email', { required: true })}
-                        className="block"
-                    />
-                    {errors.email && <span>email is required</span>}
-                    <input
-                        type="password"
-                        placeholder="password"
-                        {...register('password', {
-                            required: true,
-                            maxLength: 128
-                        })}
-                        className="block"
-                    />
-                    {errors.password && <span>password is required</span>} */}
-
+                    <div>
                         <button
-                            type="submit"
-                            className="block w-full bg-primary login-button"
-                        >
-                            Submit
-                        </button>
-                        <button
-                            className="block w-full"
+                            className="w-full text-xl font-medium text-white py-4 px-12 bg-primary rounded"
                             onClick={signInWithGoogle}
                             type="button"
                         >
-                            Sign in with google
+                            ลงชื่อเข้าใช้ด้วย Google
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </>

@@ -20,7 +20,7 @@ const MasonryLayout: FunctionComponent<{
 
     return (
         <main
-            className="relative flex flex-row gap-4 w-full px-4 lg:px-32"
+            className="relative flex flex-row gap-4 w-full px-4 lg:px-12 xl:px-20"
             ref={layoutRef}
         >
             {masonry.map((column, index) => (

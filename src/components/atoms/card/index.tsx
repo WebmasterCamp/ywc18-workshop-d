@@ -3,18 +3,15 @@ import type { FunctionComponent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import type { Chip, Color, StaticImageData } from '@typesRoot'
+import { Chips } from '@atoms'
 
-const variantMap: Record<Color, string> = {
-    primary: 'border-primary text-primary',
-    secondary: 'border-secondary text-secondary'
-}
+import type { Chip as IChip, StaticImageData } from '@typesRoot'
 
 const Card: FunctionComponent<{
     src: StaticImageData
     href: string
     title: string
-    tags: Chip[]
+    tags: IChip[]
 }> = ({ src, href, title, tags }) => (
     <>
         <Link href={href}>
@@ -28,16 +25,7 @@ const Card: FunctionComponent<{
                     {title}
                 </h3>
 
-                <footer className="flex flex-row gap-2">
-                    {tags.map(({ type, title: tag }) => (
-                        <p
-                            key={tag}
-                            className={`text-xs font-medium px-2 py-0.5 border-2 rounded-full ${variantMap[type]}`}
-                        >
-                            {tag}
-                        </p>
-                    ))}
-                </footer>
+                <Chips tags={tags} />
             </a>
         </Link>
     </>

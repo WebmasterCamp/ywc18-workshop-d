@@ -13,7 +13,9 @@ module.exports = {
             colors: {
                 primary: '#E44F39',
                 'primary-white': '#FAFAFA',
-                'grey-1': '#E6E6E6'
+                'grey-1': '#E6E6E6',
+                secondary: '#E59007',
+                'text-black': '#4B4B4B'
             },
             borderRadius: {
                 '4xl': '32px',
