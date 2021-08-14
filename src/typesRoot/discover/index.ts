@@ -18,7 +18,7 @@ export interface DiscoverItem {
         name: string
         description: string
         // ? URL
-        author: string
+        author: StaticImageData
     }
 }
 

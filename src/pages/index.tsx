@@ -26,14 +26,15 @@ const Landing: FunctionComponent<DiscoverPageProps> = ({ discover }) => {
     })
 
     return (
-        <div>
+        <>
             <Head>
-                <title>ชามShine</title>
+                <title>ชาร์มShine</title>
             </Head>
+
             <DiscoverLayout>
                 <MasonryLayout data={discoverData} />
             </DiscoverLayout>
-        </div>
+        </>
     )
 }
 

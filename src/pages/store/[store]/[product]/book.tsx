@@ -32,6 +32,9 @@ const BookPage = ({ product = null }: ProductProps) => {
             <ProductLayout>
                 <BookingForm product={product} />
             </ProductLayout>
+            <h1 className="text-3xl my-4 font-bold text-center mx-auto">
+                สำรวจเพิ่มเติม
+            </h1>
             <Masonry />
         </>
     )

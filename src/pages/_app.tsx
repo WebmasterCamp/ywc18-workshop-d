@@ -11,6 +11,7 @@ import { Drawer } from 'antd'
 import 'antd/dist/antd.css'
 import '@styles/init.sass'
 import 'tailwindcss/tailwind.css'
+import '@styles/override-antd.css'
 
 import { useMenu } from '@stores/menu'
 

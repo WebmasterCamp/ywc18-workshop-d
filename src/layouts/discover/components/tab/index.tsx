@@ -11,9 +11,9 @@ const Tab: FunctionComponent<{
     let isActive = href === asPath
 
     return (
-        <Link href={`/discover/${href}`}>
+        <Link href={href}>
             <a
-                className={`relative text-xl flex flex-col items-end ${
+                className={`relative text-xl hover:text-primary focus:text-primary flex flex-col items-end ${
                     isActive ? 'font-medium' : ''
                 }`}
             >

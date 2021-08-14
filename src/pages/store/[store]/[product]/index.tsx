@@ -67,20 +67,18 @@ const Product: FunctionComponent<ProductProps> = ({ product = null }) => {
                 </header>
 
                 <section className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
-                    <div className="flex max-w-full md:max-w-[50%] justify-start items-center">
-                        <a
-                            href="https://www.google.com/maps/place/True+Digital+Park/@13.6851571,100.6091376,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29ed269181bb1:0x60c3178ba983c76!8m2!3d13.6851519!4d100.6113263"
-                            target="_blank"
-                            rel="noreferer noreopener"
-                        >
-                            <Image className="rounded-lg" src={map} />
-                        </a>
-                    </div>
-                    <p className="flex flex-1 text-lg text-gray-700">
-                        Lorem Ipsum
-                    </p>
+                    <a
+                        href="https://www.google.com/maps/place/True+Digital+Park/@13.6851571,100.6091376,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29ed269181bb1:0x60c3178ba983c76!8m2!3d13.6851519!4d100.6113263"
+                        target="_blank"
+                        rel="noreferer noreopener"
+                    >
+                        <Image className="rounded-lg" src={map} />
+                    </a>
                 </section>
             </ProductLayout>
+            <h1 className="text-3xl my-4 font-bold text-center mx-auto">
+                สำรวจเพิ่มเติม
+            </h1>
             <Masonry />
         </>
     )

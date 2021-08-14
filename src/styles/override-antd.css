@@ -1,0 +1,37 @@
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+    background-color: #E44F39;
+    border-color: #E44F39;
+}
+
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active {
+    background-color: #E44F39;
+    border-color: #E44F39;
+}
+
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    background-color: #E44F39;
+    border-color: #E44F39;
+}
+.ant-radio-button-wrapper:hover {
+    color: #E44F39;
+}
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+    background-color: #E44F39;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before:hover {
+    background-color: #E44F39;
+    border-color: #E44F39;
+}
+.ant-radio-checked .ant-radio-inner {
+    border-color: #E44F39;
+}
+.ant-radio-checked .ant-radio-inner::after {
+    background-color: #E44F39;
+    border-color: #E44F39;
+}
+
+.ant-radio-checked .ant-radio-inner::after:focus {
+    background-color: #E44F39;
+    border-color: #E44F39;
+}
