@@ -24,7 +24,7 @@ export const Chips: FunctionComponent<{
     tags: IChip[]
     className?: string
 }> = ({ tags = [], className = '' }) => (
-    <footer className={'flex flex-row gap-2 ' + className}>
+    <footer className={'flex flex-row gap-2 flex-wrap ' + className}>
         {tags.map((tag) => (
             <Chip key={tag.title} tag={tag} />
         ))}

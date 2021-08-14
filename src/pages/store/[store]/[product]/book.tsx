@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-
+import Head from 'next/head'
 import { BookingForm } from '@components/organisms'
 import { data } from '@services/data'
 import { DiscoverItem } from '@typesRoot'
@@ -7,6 +7,7 @@ import { ProductLayout } from '@layouts'
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import { useAuth } from '@stores/auth'
 import { useRouter } from 'next/router'
+import { Masonry } from '@molecules'
 
 interface ProductProps {
     product: DiscoverItem | null
@@ -24,9 +25,15 @@ const BookPage = ({ product = null }: ProductProps) => {
         return <h1 className="text-center mx-auto text-3xl">Loading</h1>
 
     return (
-        <ProductLayout>
-            <BookingForm product={product} />
-        </ProductLayout>
+        <>
+            <Head>
+                <title>จองบริการ {product.title}</title>
+            </Head>
+            <ProductLayout>
+                <BookingForm product={product} />
+            </ProductLayout>
+            <Masonry />
+        </>
     )
 }
 

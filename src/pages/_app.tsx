@@ -30,12 +30,6 @@ const App = ({ Component, pageProps }: AppProps) => {
             <DataProvider>
                 <Navbar />
                 <Component {...pageProps} />
-                <Drawer closable={true} onClose={onClose} visible={showMenu}>
-                    <div>
-                        <div className="text-base">เข้าร่วมโครงการกับเรา</div>
-                        <div className="text-base">ติดต่อเรา</div>
-                    </div>
-                </Drawer>
             </DataProvider>
         </Provider>
     )

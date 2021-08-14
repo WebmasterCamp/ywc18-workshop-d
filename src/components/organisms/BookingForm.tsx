@@ -65,11 +65,13 @@ const BookingForm = ({ product }: ProductProps) => {
             >
                 <div className="text-3xl font-medium">รายละเอียดการจอง</div>
                 <Divider />
-                <div className="grid grid-cols-3 gap-16">
+                <div className="grid md:grid-cols-3 gap-16 grid-cols-1">
                     <div className="col-span-1 h-full">
-                        <Image src={image} />
+                        <div className="flex justify-center">
+                            <Image src={image} className="mx-auto" />
+                        </div>
                     </div>
-                    <div className="col-span-2">
+                    <div className="md:col-span-2 col-span-1">
                         <div className="text-3xl">{title}</div>
                         <div className="flex">
                             <div>By {store.name}</div>
@@ -89,7 +91,7 @@ const BookingForm = ({ product }: ProductProps) => {
                             </Radio.Group>
                         </div>
                         {place === Place.Home && (
-                            <div className="w-[300px]">
+                            <div className="">
                                 <div
                                     className="flex justify-end text-xs text-text-black"
                                     onClick={() => setShowModal(true)}
@@ -185,15 +187,15 @@ const BookingForm = ({ product }: ProductProps) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row gap-4 justify-center mt-12">
+                <div className="flex flex-row md:gap-4 justify-center mt-12 gap-2">
                     <div
-                        className="text-primary text-xl font-semibold px-12 py-3 border-2 border-primary rounded cursor-pointer"
+                        className="text-primary text-lg md:text-xl font-semibold md:px-12 px-4 py-3 border-2 border-primary rounded cursor-pointer"
                         onClick={() => router.back()}
                     >
                         กลับไปก่อนหน้า
                     </div>
                     <button
-                        className="text-white text-xl font-semibold px-12 py-3 bg-primary rounded"
+                        className="text-white text-lg md:text-xl font-semibold md:px-12 px-4 py-3 bg-primary rounded"
                         type="submit"
                     >
                         ชำระเงิน

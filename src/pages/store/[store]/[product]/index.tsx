@@ -13,22 +13,29 @@ import { data } from '@services/data'
 import map from '@public/mock/map.png'
 
 import type { DiscoverItem } from '@typesRoot'
-
+import Head from 'next/head'
 interface ProductProps {
     product: DiscoverItem | null
 }
 
 const Product: FunctionComponent<ProductProps> = ({ product = null }) => {
     if (!product) return <h1>Product not found</h1>
+
     const router = useRouter()
+
     let { image, title, tags, store, price } = product
+
     const goToBookPage = () => {
         router.push(router.asPath + '/book')
     }
+
     return (
         <>
-            <ProductLayout>
-                <header className="flex flex-row justify-center items-start gap-6">
+            <Head>
+                <title>{title}</title>
+            </Head>
+            <ProductLayout className="px-4">
+                <header className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
                     <div className="flex flex-1 justify-end items-center">
                         <Image src={image} />
                     </div>
@@ -46,7 +53,7 @@ const Product: FunctionComponent<ProductProps> = ({ product = null }) => {
                         </section>
                         <section className="flex flex-col items-start pt-10 gap-2">
                             <p className="text-lg text-gray-700 font-medium">
-                                By {store.name}{' '}
+                                By {store.name}
                                 <span>ฉีดวัคซีนแล้ว 2 เข็ม</span>
                             </p>
                             <button
@@ -59,22 +66,8 @@ const Product: FunctionComponent<ProductProps> = ({ product = null }) => {
                     </section>
                 </header>
 
-                <section className="flex flex-col">
-                    <h2 className="text-3xl font-bold mb-4">
-                        รู้จักร้านให้มากขึ้น
-                    </h2>
-                    <section className="flex flex-row justify-center items-start gap-6">
-                        <div className="flex max-w-[50%] justify-start items-center">
-                            <Image className="rounded-lg" src={image} />
-                        </div>
-                        <p className="flex flex-1 text-lg text-gray-700">
-                            Lorem Ipsum
-                        </p>
-                    </section>
-                </section>
-
-                <section className="flex flex-row justify-center items-start gap-6">
-                    <div className="flex max-w-[50%] justify-start items-center">
+                <section className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
+                    <div className="flex max-w-full md:max-w-[50%] justify-start items-center">
                         <a
                             href="https://www.google.com/maps/place/True+Digital+Park/@13.6851571,100.6091376,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29ed269181bb1:0x60c3178ba983c76!8m2!3d13.6851519!4d100.6113263"
                             target="_blank"

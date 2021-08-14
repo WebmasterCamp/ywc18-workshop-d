@@ -8,6 +8,7 @@ import {
 import { auth } from '@services/firebase'
 import { useEffect } from 'react'
 import { useAuth } from '@stores/auth'
+import Head from 'next/head'
 
 const googleAuth = new GoogleAuthProvider()
 
@@ -41,6 +42,9 @@ const LoginPage = () => {
 
     return (
         <>
+            <Head>
+                <title>เข้าสู่ระบบ</title>
+            </Head>
             <div
                 className="flex flex-col justify-center"
                 style={{

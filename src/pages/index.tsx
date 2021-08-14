@@ -10,6 +10,8 @@ import { useInfiniteScrollObserver } from '@services/hooks'
 import { data, getDiscover } from '@services/data'
 import type { DiscoverItem } from '@typesRoot'
 
+import Head from 'next/head'
+
 export interface DiscoverPageProps {
     discover: DiscoverItem[]
 }
@@ -24,9 +26,14 @@ const Landing: FunctionComponent<DiscoverPageProps> = ({ discover }) => {
     })
 
     return (
-        <DiscoverLayout>
-            <MasonryLayout data={discoverData} />
-        </DiscoverLayout>
+        <div>
+            <Head>
+                <title>ชามShine</title>
+            </Head>
+            <DiscoverLayout>
+                <MasonryLayout data={discoverData} />
+            </DiscoverLayout>
+        </div>
     )
 }
 

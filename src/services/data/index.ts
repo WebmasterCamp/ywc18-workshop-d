@@ -1,7 +1,5 @@
 import type { DiscoverItem } from '@typesRoot'
 
-import { nanoid } from 'nanoid'
-
 import nail1 from '@public/nail/1.png'
 import nail2 from '@public/nail/2.png'
 import nail3 from '@public/nail/3.png'
@@ -14,6 +12,17 @@ import nail9 from '@public/nail/9.png'
 import nail10 from '@public/nail/10.png'
 import nail11 from '@public/nail/11.png'
 import nail12 from '@public/nail/12.png'
+
+import hair1 from '@public/hair/1.png'
+import hair2 from '@public/hair/2.png'
+import hair3 from '@public/hair/3.png'
+import hair4 from '@public/hair/4.png'
+import hair5 from '@public/hair/5.png'
+import hair6 from '@public/hair/1.png'
+import hair7 from '@public/hair/2.png'
+import hair8 from '@public/hair/3.png'
+import hair9 from '@public/hair/4.png'
+import hair10 from '@public/hair/5.png'
 
 const mockId = [
     '-6wj5QhoP',
@@ -46,6 +55,7 @@ const mockId = [
 export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     {
         title: 'เพ้นท์เล็บสีแดงมาก',
+        type: 'nail',
         detail: '',
         image: nail1,
         tags: [
@@ -56,11 +66,12 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
         store: {
             name: 'beauty-store',
             description: '',
-            author: ''
+            author: '/author/1.png'
         }
     },
     {
         title: 'เพ้นท์เล็บสีแดง',
+        type: 'nail',
         detail: '',
         image: nail2,
         tags: [
@@ -76,6 +87,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บสีฟ้า',
+        type: 'nail',
         detail: '',
         image: nail3,
         tags: [
@@ -91,6 +103,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บหลากสี',
+        type: 'nail',
         detail: '',
         image: nail4,
         tags: [
@@ -106,6 +119,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บสีชมพู',
+        type: 'nail',
         detail: '',
         image: nail5,
         tags: [
@@ -121,6 +135,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บแฟนตาซี',
+        type: 'nail',
         detail: '',
         image: nail6,
         tags: [
@@ -136,6 +151,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บสีฟ้าลายดอกไม้',
+        type: 'nail',
         detail: '',
         image: nail7,
         tags: [
@@ -151,6 +167,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บสีแดง ดูเรียบหรู',
+        type: 'nail',
         detail: '',
         image: nail8,
         tags: [
@@ -166,6 +183,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บสีแดงชมพู',
+        type: 'nail',
         detail: '',
         image: nail9,
         tags: [
@@ -181,6 +199,7 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บสีดำ',
+        type: 'nail',
         detail: '',
         image: nail10,
         tags: [
@@ -196,23 +215,9 @@ export const mockProduct: Omit<DiscoverItem, 'id'>[] = [
     },
     {
         title: 'เพ้นท์เล็บสีชมพู',
+        type: 'nail',
         detail: '',
         image: nail11,
-        tags: [
-            { type: 'primary', title: 'ไปที่ร้าน' },
-            { type: 'secondary', title: 'มาที่บ้าน: ย่านสาทร' }
-        ],
-        price: 370,
-        store: {
-            name: 'beauty-store',
-            description: '',
-            author: ''
-        }
-    },
-    {
-        title: 'เพ้นท์เล็บใส',
-        detail: '',
-        image: nail12,
         tags: [
             { type: 'primary', title: 'ไปที่ร้าน' },
             { type: 'secondary', title: 'มาที่บ้าน: ย่านสาทร' }

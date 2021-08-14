@@ -18,6 +18,7 @@ class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Athiti&display=swap"
                         rel="stylesheet"
                     />
+                    <link rel="icon" href="/icon.png" />
                 </Head>
                 <body>
                     <Main />

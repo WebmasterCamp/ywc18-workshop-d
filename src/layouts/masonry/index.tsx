@@ -20,13 +20,13 @@ const MasonryLayout: FunctionComponent<{
 
     return (
         <main
-            className="relative flex flex-row gap-4 w-full px-4 lg:px-12 xl:px-20"
+            className="relative flex flex-row gap-8 w-full px-4 lg:px-12 xl:px-20"
             ref={layoutRef}
         >
             {masonry.map((column, index) => (
                 <section
                     key={index.toString()}
-                    className="flex flex-col flex-1 gap-4"
+                    className="flex flex-col flex-1 gap-8"
                 >
                     {column.map(({ id, image, store, title, tags }) => (
                         <Card
